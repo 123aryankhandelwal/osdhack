@@ -56,8 +56,6 @@ const App = () => {
           <Route path='/products' component={Products} />
         </Switch>
       </Router>
-      {/* <Header /> */}
-      {/* <Slides /> */}
       <div className="ak">
         <ImageSlider slides={SliderData} />
       </div>
