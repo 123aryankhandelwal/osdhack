@@ -12,25 +12,25 @@ export const SidebarData = [
   },
   {
     title: 'Reports',
-    path: '/reports',
+    path: 'https://www.youtube.com/',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
   {
     title: 'Products',
-    path: '/products',
+    path: 'https://www.youtube.com/s',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
     title: 'Team',
-    path: '/team',
+    path: 'https://www.youtube.com/',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
     title: 'Messages',
-    path: '/messages',
+    path: 'https://www.youtube.com/s',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
   },
