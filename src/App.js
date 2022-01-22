@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import ImageSlider from './components/ImageSlider';
-import { SliderData } from './components/SliderData';
+import ImageSlider from "./components/ImageSlider";
+import { SliderData } from "./components/SliderData";
 import { db } from "./firebase";
 import Footer from "./Footer";
 import Header from "./Header";
 import Media from "./Media";
 import MediaCard from "./MediaCard";
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Reports from './pages/Reports';
+import Products from './pages/Products';
+
+
 const App = () => {
   const [mediaCard, setMediaCard] = useState([]);
   const [media, setMedia] = useState([]);
@@ -38,16 +45,25 @@ const App = () => {
       setMediaCard(snapshot.docs.map((doc) => doc.data()));
     });
   }, []);
+
   return (
     <div className="app">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/reports' component={Reports} />
+          <Route path='/products' component={Products} />
+        </Switch>
+      </Router>
+      {/* <Header /> */}
+      {/* <Slides /> */}
       <div className="ak">
         <ImageSlider slides={SliderData} />
       </div>
-      {/* <Header /> */}
-      {/* <Slides /> */}
-     
-      {/* <span>Specials & Latest Movies</span> */}
       <section class="card-list">
+        <h1>hots</h1>
+        <br></br>
         <article class="card">
           <header class="card-header">
             <p>Sep 11th 2020</p>
@@ -374,32 +390,1002 @@ const App = () => {
           </div>
         </article>
       </section>
-      {/* <div className="continuewatch">
+      <div className="continuewatch">
+        {/* <span>Continue Watching</span> */}
       </div>
       <div className="continuewatch">
-        <span>Specials & Latest Movies</span>
-        <div className="flex-continue">
-          {media.map((media) => (
-            <Media img={media.img} />
-          ))}
-        </div>
+        <section class="card-list">
+          <h1>hots</h1>
+          <br></br>
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Never forget</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="avatar.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Author</div>
+                Jeff Delaney
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+              <a href="#">web-dev</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+        </section>
       </div>
       <div className="continuewatch">
-        <span>Shows Recommended For You</span>
-        <div className="flex-continue">
-          {shows.map((shows) => (
-            <Media img={shows.img} />
-          ))}
-        </div>
+        <section class="card-list">
+          <h1>hots</h1>
+          <br></br>
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Never forget</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="avatar.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Author</div>
+                Jeff Delaney
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+              <a href="#">web-dev</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+        </section>
       </div>
       <div className="continuewatch">
-        <span>Movies Recommended For You</span>
-        <div className="flex-continue">
-          {movies.map((movies) => (
-            <Media img={movies.img} />
-          ))}
-        </div>
-      </div> */}
+        <section class="card-list">
+          <h1>hots</h1>
+          <br></br>
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Never forget</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="avatar.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Author</div>
+                Jeff Delaney
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+              <a href="#">web-dev</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/a.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Zheng Zhilong
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/b.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Francis Drake
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/c.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                Edward Teach
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <header class="card-header">
+              <p>Sep 11th 2020</p>
+              <h2>Card Tricks are fun!</h2>
+            </header>
+
+            <div class="card-author">
+              <a class="author-avatar" href="#">
+                <img src="https://api.adorable.io/avatars/172/d.png" />
+              </a>
+              <svg class="half-circle" viewBox="0 0 106 57">
+                <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+              </svg>
+
+              <div class="author-name">
+                <div class="author-name-prefix">Pirate</div>
+                William Kidd
+              </div>
+            </div>
+            <div class="tags">
+              <a href="#">html</a>
+              <a href="#">css</a>
+            </div>
+          </article>
+        </section>
+      </div>
       <Footer />
     </div>
   );
